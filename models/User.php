@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\base\Exception;
+use yii\base\NotSupportedException;
+use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
@@ -20,13 +23,42 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
         return '{{%user}}';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [];
+    }
+
+    /**
+     * Finds user by username
+     *
+     * @param string $username
+     * @return static|null
+     */
+    public static function findByLogin($login)
+    {
+        return static::findOne(['login' => $login]);
+    }
+
+    /**
+     * Generates password hash from password and sets it to the model
+     *
+     * @param string $password
+     * @throws Exception
+     */
+    public function setPassword($password)
+    {
+        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
 
     /**
@@ -49,26 +81,11 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Generates password hash from password and sets it to the model
-     *
-     * @param string $password
-     * @throws \yii\base\Exception
-     */
-    public function setPassword($password)
-    {
-        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
-    }
-
-    /**
-     * Finds an identity by the given ID.
-     * @param string|int $id the ID to be looked for
-     * @return IdentityInterface the identity object that matches the given ID.
-     * Null should be returned if such an identity cannot be found
-     * or the identity is not in an active state (disabled, deleted, etc.)
+     * @inheritdoc
      */
     public static function findIdentity($id)
     {
-        // TODO: Implement findIdentity() method.
+        return static::findOne(['id' => $id]);
     }
 
     /**

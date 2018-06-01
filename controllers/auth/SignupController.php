@@ -1,17 +1,16 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\auth;
 
-use app\models\LoginForm;
-use app\models\ContactForm;
-use app\models\SignupForm;
+use app\models\auth\SignupForm;
 use Yii;
+use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\filters\VerbFilter;
 
-class SiteController extends Controller
+class SignupController extends Controller
 {
-
-    public function actionSignup()
+    public function actionIndex()
     {
         $model = new SignupForm();
 
@@ -23,9 +22,8 @@ class SiteController extends Controller
             }
         }
 
-        return $this->render('signup', [
+        return $this->render('/auth/signup', [
             'model' => $model,
         ]);
     }
-
 }

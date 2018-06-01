@@ -43,14 +43,17 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                //Auth route
+                'signin' => 'auth/signin/index',
+                'logout' => 'auth/signin/logout',
+                'signup' => 'auth/signup/index',
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];
