@@ -21,8 +21,11 @@ class m180601_100007_create_user_table extends Migration
             'sex' => "ENUM('no information', 'male', 'female')",
             'password_hash' => $this->string()->notNull(),
             'password_reset_token' => $this->string()->unique(),
-            'timestamp' => 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP'
+            'created_at' => 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP'
         ]);
+
+        $sql = "ALTER TABLE user ALTER sex SET DEFAULT 'no information'";
+        $this->execute($sql);
     }
 
     /**
