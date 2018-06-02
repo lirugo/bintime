@@ -47,7 +47,8 @@ $this->title = 'My Yii Application';
                                <?php echo $user->email; ?> <br/>
                                <?php echo $user->created_at; ?> <br/>
                            </p>
-                           <a href="#" class="btn btn-sm btn-primary pull-right">Edit profile</a>
+                           <a href="#" class="btn btn-sm btn-danger pull-right">Delete users</a>
+                           <a href="#" class="btn btn-sm btn-primary pull-right m-r-5">Edit profile</a>
                        </div>
                    </div>
                </div>
