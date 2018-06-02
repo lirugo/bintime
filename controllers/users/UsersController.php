@@ -6,6 +6,7 @@ use app\models\Address;
 use app\models\User;
 use Yii;
 use yii\data\Pagination;
+use yii\data\Sort;
 use yii\web\Controller;
 
 class UsersController extends Controller
@@ -25,7 +26,27 @@ class UsersController extends Controller
             'defaultPageSize' => 6,
             'totalCount' => $query->count(),
         ]);
-        $users = $query->orderBy('created_at', 'desc')
+
+        //Sorting
+        $sort = new Sort([
+            'attributes' => [
+                'name' => [
+                    'asc' => ['name' => SORT_ASC, 'surname' => SORT_ASC],
+                    'desc' => ['name' => SORT_DESC, 'surname' => SORT_DESC],
+                    'default' => SORT_DESC,
+                    'label' => 'By name',
+                ],
+                'created_at' => [
+                    'asc' => ['created_at' => SORT_ASC],
+                    'desc' => ['created_at' => SORT_DESC],
+                    'default' => SORT_DESC,
+                    'label' => 'By creation',
+                ],
+            ],
+        ]);
+
+        //New user first
+        $users = $query->orderBy($sort->orders)
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
@@ -34,6 +55,7 @@ class UsersController extends Controller
         return $this->render('/users/index', [
             'users' => $users,
             'pagination' => $pagination,
+            'sort' => $sort,
         ]);
     }
 

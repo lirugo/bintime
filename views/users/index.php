@@ -20,6 +20,12 @@ $this->title = 'My Yii Application';
                         <a href="/signup">
                             <button class="btn btn-sm btn-success pull-right">Create new user</button>
                         </a>
+                        <button class="btn btn-sm btn-success pull-right m-r-5">
+                            <?php echo $sort->link('name'); ?>
+                        </button>
+                        <button class="btn btn-sm btn-success pull-right m-r-5">
+                            <?php echo $sort->link('created_at'); ?>
+                        </button>
                     </div>
                </div>
            </div>
@@ -44,7 +50,7 @@ $this->title = 'My Yii Application';
                         <img class="panel-img-top center" src="https://www.w3schools.com/howto/img_avatar.png" width="100%" alt="Card image cap">
                        </div>
                        <div class="panel-body">
-                           <h2 class="text-center">Benjamin Franklin</h2>
+                           <h2 class="text-center"> <?php echo $user->surname.' '.$user->name; ?></h2>
                            <p class="panel-text">
                                <?php echo $user->login; ?> <br/>
                                <?php echo $user->email; ?> <br/>
