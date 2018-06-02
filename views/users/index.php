@@ -51,7 +51,7 @@ $this->title = 'My Yii Application';
                                <?php echo Yii::$app->formatter->format($user->created_at, 'date');  ?> <br/>
                            </p>
                            <?php echo Html::a('Delete user', array('users/users/delete', 'id' => $user->id), array('class' => 'btn btn-sm btn-danger pull-right')); ?>
-                           <a href="#" class="btn btn-sm btn-primary pull-right m-r-5">Edit profile</a>
+                           <?php echo Html::a('Edit user', array('users/users/update', 'id' => $user->id), array('class' => 'btn btn-sm btn-primary pull-right m-r-5')); ?>
                        </div>
                    </div>
                </div>

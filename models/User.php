@@ -28,7 +28,29 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function rules()
     {
-        return [];
+        return [
+            //User data
+            //Login
+            ['login', 'trim'],
+            ['login', 'required'],
+            ['login', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This login has already been taken.'],
+            ['login', 'string', 'min' => 4, 'max' => 255],
+            //Name
+            ['name', 'trim'],
+            ['name', 'required'],
+            ['name', 'match', 'pattern' => '/^[A-Z][a-z_-]{2,19}$/', 'message' => 'First character is uppercase and only characters'],
+            //Surname
+            ['surname', 'trim'],
+            ['surname', 'required'],
+            ['surname', 'match', 'pattern' => '/^[A-Z][a-z_-]{2,19}$/', 'message' => 'First character is uppercase and only characters'],
+            //Email
+            ['email', 'trim'],
+            ['email', 'required'],
+            ['email', 'email'],
+            ['email', 'unique', 'targetClass' => '\app\models\User'],
+            //Gender
+            ['sex', 'trim'],
+        ];
     }
 
     /**

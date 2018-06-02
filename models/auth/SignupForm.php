@@ -77,7 +77,6 @@ class SignupForm extends Model
             ['house', 'required'],
             //Office
             ['office', 'trim'],
-
         ];
     }
 

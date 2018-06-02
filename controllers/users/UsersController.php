@@ -39,7 +39,29 @@ class UsersController extends Controller
     /**
      * Delete user.
      *
+     * @param $id
      * @return string
+     * @throws \Throwable
+     */
+    public function actionUpdate($id)
+    {
+        $user = User::findOne($id);
+
+        if($user->load(Yii::$app->request->post()) && $user->save())
+            return $this->redirect(['/users/users/index']);
+
+        return $this->render('/users/update', [
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * Delete user.
+     *
+     * @param $id
+     * @return string
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
     public function actionDelete($id)
     {
