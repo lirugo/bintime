@@ -2,6 +2,7 @@
 
 namespace app\controllers\users;
 
+use app\models\Address;
 use app\models\User;
 use Yii;
 use yii\data\Pagination;
@@ -24,7 +25,7 @@ class UsersController extends Controller
             'defaultPageSize' => 6,
             'totalCount' => $query->count(),
         ]);
-        $users = $query->orderBy('created_at')
+        $users = $query->orderBy('created_at', 'desc')
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
@@ -45,13 +46,33 @@ class UsersController extends Controller
      */
     public function actionUpdate($id)
     {
+        //Get user
         $user = User::findOne($id);
+        $addresses = $user->addresses;
 
+        //Pagination
+        //I know it's very dirty, i will been change it in the near future
+        $query = Address::find()->where(['user_id' => $user->id]);
+        $countQuery = clone $query;
+        $pages = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $countQuery->count()
+        ]);
+        $addresses = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+
+
+        //Update
         if($user->load(Yii::$app->request->post()) && $user->save())
             return $this->redirect(['/users/users/index']);
 
+        //Return view with data
         return $this->render('/users/update', [
             'user' => $user,
+            'addresses' => $addresses,
+            'pages' => $pages,
         ]);
     }
 
