@@ -26,14 +26,6 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
-        return '{{%user}}';
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [];
@@ -86,6 +78,15 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findIdentity($id)
     {
         return static::findOne(['id' => $id]);
+    }
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAddresses()
+    {
+        return $this->hasMany(Address::className(), ['user_id' => 'id']);
     }
 
     /**

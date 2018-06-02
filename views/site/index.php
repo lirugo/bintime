@@ -8,5 +8,6 @@ $this->title = 'My Yii Application';
 
     <div class="jumbotron">
         <h1>Yii home page</h1>
+       <?php echo $user;?>
     </div>
 </div>
