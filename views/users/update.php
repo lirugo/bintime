@@ -1,4 +1,4 @@
-<?php
+php<?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\widgets\LinkPager;
@@ -48,13 +48,13 @@ use yii\widgets\LinkPager;
                     <tbody>
                     <?php foreach($addresses as $address) {?>
                         <tr>
-                            <th scope="row"><? echo $address->id ?></th>
-                            <td><? echo $address->postcode ?></td>
-                            <td><? echo $address->country ?></td>
-                            <td><? echo $address->city ?></td>
-                            <td><? echo $address->street ?></td>
-                            <td><? echo $address->house ?></td>
-                            <td><? echo $address->office ?></td>
+                            <th scope="row"><?php echo $address->id; ?></th>
+                            <td><?php echo $address->postcode; ?></td>
+                            <td><?php echo $address->country; ?></td>
+                            <td><?php echo $address->city; ?></td>
+                            <td><?php echo $address->street; ?></td>
+                            <td><?php echo $address->house; ?></td>
+                            <td><?php echo $address->office; ?></td>
                             <td>
                                 <a href="#" class="btn btn-sm btn-success">Edit</a>
                                 <?php echo Html::a('Delete', array('users/address/delete', 'id' => $address->id), array('class' => 'btn btn-sm btn-danger')); ?>
