@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 
+use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
 $this->title = 'My Yii Application';
@@ -47,7 +48,7 @@ $this->title = 'My Yii Application';
                                <?php echo $user->email; ?> <br/>
                                <?php echo Yii::$app->formatter->format($user->created_at, 'date');  ?> <br/>
                            </p>
-                           <a href="#" class="btn btn-sm btn-danger pull-right">Delete user</a>
+                           <?php echo Html::a('Delete user', array('users/users/delete', 'id' => $user->id), array('class' => 'btn btn-sm btn-danger pull-right')); ?>
                            <a href="#" class="btn btn-sm btn-primary pull-right m-r-5">Edit profile</a>
                        </div>
                    </div>

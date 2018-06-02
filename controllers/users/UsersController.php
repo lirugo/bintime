@@ -3,6 +3,7 @@
 namespace app\controllers\users;
 
 use app\models\User;
+use Yii;
 use yii\data\Pagination;
 use yii\web\Controller;
 
@@ -33,6 +34,26 @@ class UsersController extends Controller
             'users' => $users,
             'pagination' => $pagination,
         ]);
+    }
+
+    /**
+     * Delete user.
+     *
+     * @return string
+     */
+    public function actionDelete($id)
+    {
+        //Find user by $id
+        $user = User::find()->where(['id' => $id])->one();
+
+        //Delete if exist
+        if($user !== NULL)
+            $user->delete();
+
+        //Show flash message
+
+        // Redirect back
+        Yii::$app->getResponse()->redirect(array('/users/users/index'));
     }
 
 }
