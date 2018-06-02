@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 
+use yii\widgets\LinkPager;
+
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
@@ -21,54 +23,47 @@ $this->title = 'My Yii Application';
        </div>
 
        <div class="row">
-           <div class="col-md-4">
-               <div class="panel panel-default">
-                   <div>
-                    <img class="panel-img-top center" src="https://www.w3schools.com/howto/img_avatar.png" width="100%" alt="Card image cap">
-                   </div>
-                   <div class="panel-body">
-                       <h2 class="text-center">Benjamin Franklin</h2>
-                       <p class="panel-text">
-                           Login <br/>
-                           email@app.com <br/>
-                           12-12-2012 12:12 <br/>
-                       </p>
-                       <a href="#" class="btn btn-sm btn-primary pull-right">Edit profile</a>
-                   </div>
-               </div>
-           </div>
-           <div class="col-md-4">
-               <div class="panel panel-default">
-                   <div>
-                    <img class="panel-img-top center" src="https://www.w3schools.com/howto/img_avatar.png" width="100%" alt="Card image cap">
-                   </div>
-                   <div class="panel-body">
-                       <h2 class="text-center">Benjamin Franklin</h2>
-                       <p class="panel-text">
-                           Login <br/>
-                           email@app.com <br/>
-                           12-12-2012 12:12 <br/>
-                       </p>
-                       <a href="#" class="btn btn-sm btn-primary pull-right">Edit profile</a>
-                   </div>
-               </div>
-           </div>
-           <div class="col-md-4">
-               <div class="panel panel-default">
-                   <div>
-                    <img class="panel-img-top center" src="https://www.w3schools.com/howto/img_avatar.png" width="100%" alt="Card image cap">
-                   </div>
-                   <div class="panel-body">
-                       <h2 class="text-center">Benjamin Franklin</h2>
-                       <p class="panel-text">
-                           Login <br/>
-                           email@app.com <br/>
-                           12-12-2012 12:12 <br/>
-                       </p>
-                       <a href="#" class="btn btn-sm btn-primary pull-right">Edit profile</a>
-                   </div>
-               </div>
+           <div class="col-md-12 text-center">
+               <?php
+               // Display pagination
+               echo LinkPager::widget([
+                   'pagination' => $pagination,
+               ]);
+               ?>
            </div>
        </div>
+
+       <div class="row">
+           <?php foreach ($users as $user) { ?>
+               <div class="col-md-4">
+                   <div class="panel panel-default">
+                       <div>
+                        <img class="panel-img-top center" src="https://www.w3schools.com/howto/img_avatar.png" width="100%" alt="Card image cap">
+                       </div>
+                       <div class="panel-body">
+                           <h2 class="text-center">Benjamin Franklin</h2>
+                           <p class="panel-text">
+                               <?php echo $user->login; ?> <br/>
+                               <?php echo $user->email; ?> <br/>
+                               <?php echo $user->created_at; ?> <br/>
+                           </p>
+                           <a href="#" class="btn btn-sm btn-primary pull-right">Edit profile</a>
+                       </div>
+                   </div>
+               </div>
+           <?php } ?>
+       </div>
+
+       <div class="row">
+           <div class="col-md-12 text-center">
+               <?php
+               // Display pagination
+               echo LinkPager::widget([
+                   'pagination' => $pagination,
+               ]);
+               ?>
+           </div>
+       </div>
+
    </div>
 </div>

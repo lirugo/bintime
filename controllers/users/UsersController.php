@@ -3,6 +3,7 @@
 namespace app\controllers\users;
 
 use app\models\User;
+use yii\data\Pagination;
 use yii\web\Controller;
 
 class UsersController extends Controller
@@ -14,8 +15,24 @@ class UsersController extends Controller
      */
     public function actionIndex()
     {
-        $users = User::find()->all();
-        return $this->render('/users/index', compact('users'));
+        // Get all users
+        $query = User::find();
+
+        // Set pagination parameters
+        $pagination = new Pagination([
+            'defaultPageSize' => 6,
+            'totalCount' => $query->count(),
+        ]);
+        $users = $query->orderBy('created_at')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+
+        // Return view with data
+        return $this->render('/users/index', [
+            'users' => $users,
+            'pagination' => $pagination,
+        ]);
     }
 
 }
