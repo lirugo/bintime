@@ -54,6 +54,12 @@ $config = [
                 'signup' => '/auth/signup/index',
             ],
         ],
+        'formatter' => [
+            'dateFormat' => 'dd.MM.yyyy HH:m',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => 'EUR',
+        ],
 
     ],
     'params' => $params,
