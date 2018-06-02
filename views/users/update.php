@@ -56,7 +56,6 @@ use yii\widgets\LinkPager;
                             <td><?php echo $address->house; ?></td>
                             <td><?php echo $address->office; ?></td>
                             <td>
-                                <a href="#" class="btn btn-sm btn-success">Edit</a>
                                 <?php echo Html::a('Delete', array('users/address/delete', 'id' => $address->id), array('class' => 'btn btn-sm btn-danger')); ?>
                             </td>
                         </tr>
