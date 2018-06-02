@@ -2,7 +2,7 @@
 
 namespace app\controllers\auth;
 
-use app\models\LoginForm;
+use app\models\auth\SigninForm;
 use Yii;
 use yii\web\Response;
 use yii\web\Controller;
@@ -20,7 +20,7 @@ class SigninController extends Controller
             return $this->goHome();
         }
 
-        $model = new LoginForm();
+        $model = new SigninForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }

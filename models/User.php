@@ -93,7 +93,7 @@ class User extends ActiveRecord implements IdentityInterface
      * @param mixed $token the token to be looked for
      * @param mixed $type the type of the token. The value of this parameter depends on the implementation.
      * For example, [[\yii\filters\auth\HttpBearerAuth]] will set this parameter to be `yii\filters\auth\HttpBearerAuth`.
-     * @return IdentityInterface the identity object that matches the given token.
+     * @return void the identity object that matches the given token.
      * Null should be returned if such an identity cannot be found
      * or the identity is not in an active state (disabled, deleted, etc.)
      */
@@ -124,7 +124,7 @@ class User extends ActiveRecord implements IdentityInterface
      *
      * This is required if [[User::enableAutoLogin]] is enabled.
      * @param string $authKey the given auth key
-     * @return bool whether the given auth key is valid.
+     * @return void whether the given auth key is valid.
      * @see getAuthKey()
      */
     public function validateAuthKey($authKey)

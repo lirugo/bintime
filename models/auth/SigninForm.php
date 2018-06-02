@@ -1,17 +1,18 @@
 <?php
 
-namespace app\models;
+namespace app\models\auth;
 
+use app\models\User;
 use Yii;
 use yii\base\Model;
 
 /**
- * LoginForm is the model behind the login form.
+ * SigninForm is the model behind the login form.
  *
  * @property User|null $user This property is read-only.
  *
  */
-class LoginForm extends Model
+class SigninForm extends Model
 {
     public $login;
     public $password;
