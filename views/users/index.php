@@ -17,7 +17,9 @@ $this->title = 'My Yii Application';
                </div>
                <div class="panel panel-default">
                     <div class="panel-body">
-                        <button class="btn btn-sm btn-success pull-right">Create new user</button>
+                        <a href="/signup">
+                            <button class="btn btn-sm btn-success pull-right">Create new user</button>
+                        </a>
                     </div>
                </div>
            </div>
