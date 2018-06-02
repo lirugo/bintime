@@ -20,10 +20,10 @@ $this->title = 'My Yii Application';
                         <a href="/signup">
                             <button class="btn btn-sm btn-success pull-right">Create new user</button>
                         </a>
-                        <button class="btn btn-sm btn-success pull-right m-r-5">
+                        <button class="btn btn-sm btn-warning pull-left m-r-5">
                             <?php echo $sort->link('name'); ?>
                         </button>
-                        <button class="btn btn-sm btn-success pull-right m-r-5">
+                        <button class="btn btn-sm btn-warning pull-left m-r-5">
                             <?php echo $sort->link('created_at'); ?>
                         </button>
                     </div>

@@ -15,6 +15,7 @@ class SeedController extends Controller
             $user->name = 'name';
             $user->surname = 'surname';
             $user->email = 'email@app.com';
+            $user->sex = 'male';
             $user->setPassword('password');
         $user->save();
 

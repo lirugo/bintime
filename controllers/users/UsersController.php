@@ -20,7 +20,6 @@ class UsersController extends Controller
     {
         // Get all users
         $query = User::find();
-
         // Set pagination parameters
         $pagination = new Pagination([
             'defaultPageSize' => 6,
@@ -45,7 +44,7 @@ class UsersController extends Controller
             ],
         ]);
 
-        //New user first
+        //Set sorting and pagination
         $users = $query->orderBy($sort->orders)
             ->offset($pagination->offset)
             ->limit($pagination->limit)
@@ -60,7 +59,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Delete user.
+     * Update user.
      *
      * @param $id
      * @return string
@@ -70,6 +69,7 @@ class UsersController extends Controller
     {
         //Get user
         $user = User::findOne($id);
+
         $addresses = $user->addresses;
 
         //Pagination

@@ -52,6 +52,8 @@ class SignupForm extends Model
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'unique', 'targetClass' => '\app\models\User'],
+            //Gender
+            ['sex', 'required'],
             //Password
             ['password', 'trim'],
             ['password', 'required'],
