@@ -48,8 +48,6 @@ class User extends ActiveRecord implements IdentityInterface
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'unique', 'targetClass' => '\app\models\User'],
-            //Gender
-            ['sex', 'trim'],
         ];
     }
 
